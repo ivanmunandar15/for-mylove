@@ -1,22 +1,28 @@
-import {heroui} from "@heroui/theme"
-
 /** @type {import('tailwindcss').Config} */
-const config = {
+module.exports = {
   content: [
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-mono)"],
+        'dancing': ['"Dancing Script"', 'cursive'],
+        'sans': ['Poppins', 'sans-serif'],
+        'serif': ['"Cormorant Garamond"', 'serif'],
+        'cormorant': ['"Cormorant Garamond"', 'serif'],
+      },
+      animation: {
+        'float-heart': 'floatHeart var(--animation-duration, 10s) linear forwards',
+      },
+      keyframes: {
+        floatHeart: {
+          '0%': { transform: 'translateY(0) rotate(45deg) scale(1)', opacity: 1 },
+          '100%': { transform: 'translateY(-100vh) rotate(45deg) scale(0)', opacity: 0 },
+        },
       },
     },
   },
-  darkMode: "class",
-  plugins: [heroui()],
+  plugins: [],
 }
-
-module.exports = config;
